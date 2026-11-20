@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Panels Deluxe — GTA-style cover maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand">VICE PANELS <span>DELUXE</span></div>
+    <p class="tagline">Your photos, a Vice City grade and poster-grid panels — a cover worth posting, made entirely on your machine.</p>
+  </header>
+
+  <main class="app">
+    <section class="stage">
+      <canvas id="cover" width="1920" height="1080" aria-label="Your cover preview"></canvas>
+      <p class="hint">Click a panel to select it &middot; drag on the cover to pan its photo &middot; scroll to zoom it.</p>
+    </section>
+
+    <aside class="rail">
+      <section class="card">
+        <h2>Layout</h2>
+        <div class="seg" id="layouts"></div>
+        <h2 class="subhead">Cover size</h2>
+        <div class="seg" id="sizes">
+          <button type="button" data-size="square">1080 &times; 1080</button>
+          <button type="button" data-size="portrait">1080 &times; 1350</button>
+          <button type="button" data-size="wide">1920 &times; 1080</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="panelLabel">Panel 1</h2>
+        <div class="row">
+          <button type="button" id="uploadBtn" class="primary">Upload a photo</button>
+        </div>
+        <div class="row">
+          <button type="button" id="sampleBoulevard">Sample: Boulevard</button>
+          <button type="button" id="samplePier">Sample: Pier</button>
+        </div>
+        <div class="row">
+          <button type="button" id="fillBoulevard">Fill all: Boulevard</button>
+          <button type="button" id="fillPier">Fill all: Pier</button>
+        </div>
+        <label class="slider">Zoom <input id="zoom" type="range" min="25" max="500" value="100"></label>
+        <div class="row">
+          <div class="seg grow" id="modes">
+            <button type="button" data-mode="fill">Fill panel</button>
+            <button type="button" data-mode="fit">Fit whole photo</button>
+          </div>
+          <button type="button" id="resetPanel">Reset crop</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Colour grade</h2>
+        <div class="seg" id="grades"></div>
+        <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+        <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      </section>
+
+      <section class="card">
+        <h2>Caption</h2>
+        <label>Title line 1 <input id="capLine1" type="text" maxlength="24" value="VICE CITY"></label>
+        <label>Title line 2 <input id="capLine2" type="text" maxlength="24" value="DREAMS"></label>
+        <label>Subtitle <input id="capSub" type="text" maxlength="40" value="my vice story"></label>
+        <label>Sticker badge <input id="capSticker" type="text" maxlength="18" value="DELUXE EDITION"></label>
+        <div class="row swatches" id="colors">
+          <button type="button" data-color="white" style="--sw:#ffffff" aria-label="White"></button>
+          <button type="button" data-color="pink" style="--sw:#ff5da2" aria-label="Pink"></button>
+          <button type="button" data-color="yellow" style="--sw:#ffd23e" aria-label="Yellow"></button>
+          <button type="button" data-color="cyan" style="--sw:#3ee6ff" aria-label="Cyan"></button>
+        </div>
+        <label class="slider">Title size <input id="capScale" type="range" min="60" max="150" value="100"></label>
+        <div class="seg" id="positions">
+          <button type="button" data-pos="bottom">Caption at bottom</button>
+          <button type="button" data-pos="top">Caption at top</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Export</h2>
+        <button type="button" id="exportBtn" class="primary big">Export PNG</button>
+        <p id="status" role="status"></p>
+        <p class="fineprint">Photos never leave this device. No uploads, no accounts, no watermarks.</p>
+      </section>
+    </aside>
+  </main>
+</div>
+
+<input id="fileInput" type="file" accept="image/*" hidden>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
